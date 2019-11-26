@@ -72,12 +72,29 @@ var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHei
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
+
 // create the shape
-var geometry = new THREE.CylinderBufferGeometry( .2, .2, 20, 32 );
+var geometry = new THREE.CylinderBufferGeometry( .1, .1, 25, 32 );
 // create a material, colour or image texture
 var material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: false });
 var cube = new THREE.Mesh(geometry, material);
+
+
+var geometryLine = new THREE.CylinderBufferGeometry( .1, .1, 25, 32 );
+// create a material, colour or image texture
+var materialLine = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: false });
+var line = new THREE.Mesh(geometryLine, materialLine);
+
+cube.position.x = -30;
+
+line.rotation.set(0,0,Math.PI/2)
+cube.rotation.set(0,0,Math.PI/2)
+
+console.log(line);
+
 scene.add(cube);
+scene.add(line);
+
 camera.position.z = 50;
 // game logic
 var update = function () {
